@@ -1,4 +1,4 @@
-== Backend base listo ==
+== Backend API listo ==
 
 Cómo correrlo:
 1. Tener Docker Desktop abierto.
@@ -9,6 +9,7 @@ Cómo correrlo:
      MONGO_URI=mongodb://localhost:27017/recipehub
      JWT_SECRET=<un texto largo>
 4. npm install  y luego  npm run dev
+5. Para correr pruebas: npm test
 
 Estructura:
   src/config/db.js -> conexión a Mongo
@@ -23,12 +24,17 @@ Endpoints que ya funcionan:
   POST /api/auth/register -> body {nombre, email, password}  -> 201, devuelve {_id, nombre, email}
   POST /api/auth/login -> body {email, password}          -> {token, usuario}
   GET  /api/auth/me -> requiere header Authorization: Bearer <token>
+  GET  /api/recetas -> lista recetas con filtros opcionales categoria, dificultad, tags
+  POST /api/recetas -> crea receta, requiere Authorization: Bearer <token>
+  GET  /api/recetas/:id -> detalle con autor populado y calificacionPromedio
+  PUT  /api/recetas/:id -> edita receta, requiere token y ser autor
+  DELETE /api/recetas/:id -> borra receta y comentarios asociados, requiere token y ser autor
+  GET  /api/recetas/:id/comentarios -> lista comentarios con usuario populado
+  POST /api/recetas/:id/comentarios -> crea comentario, requiere token
+  DELETE /api/comentarios/:id -> borra comentario, requiere token y ser autor
+  GET  /api/health -> {status, timestamp}
 
-Lo que te toca a ti (Integrante 2):
-  - Modelo Comentario (recetaId ref, usuarioId ref, texto, calificacion 1..5, createdAt)
-  - CRUD de recetas (usar 'auth' en crear/editar/borrar; validar que sea el autor)
-  - Al listar/ver recetas, agregar el campo calculado calificacionPromedio
-  - CRUD de comentarios
-  - GET /api/health final + validaciones + status codes
-  - 3 pruebas (que NO necesiten Mongo, como la de /api/health)
-  - Documentar la forma exacta de cada respuesta para el Integrante 3
+Entrega para el Integrante 3:
+  - El contrato exacto de respuestas esta en API_RESPUESTAS.md.
+  - La calificacionPromedio ya viene calculada en GET /api/recetas y GET /api/recetas/:id.
+  - Las pruebas obligatorias no necesitan MongoDB y se corren con npm test.
