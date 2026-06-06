@@ -1,0 +1,732 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap');
+
+/* ── Aliases locales que mapean a las variables globales ── */
+.detalle-receta {
+    --dr-surface: var(--bg-card, #1c1714);
+    --dr-border: var(--border-color, #362e28);
+    --dr-text: var(--text-cream, #f4ede2);
+    --dr-muted: var(--text-muted, #9b8c82);
+    --dr-accent: var(--accent-orange, #e88d48);
+    --dr-tag-bg: #261f1b;
+    --dr-tag-txt: #c9a888;
+    --dr-radius: 12px;
+    --dr-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Layout ── */
+
+.detalle-receta {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dr-text);
+}
+
+/* ── Hero ── */
+
+.detalle-hero {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: var(--dr-radius);
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    background: #261f1b;
+}
+
+.detalle-hero__imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.detalle-hero__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    background: linear-gradient(135deg, #261f1b 0%, #1c1714 100%);
+}
+
+.detalle-hero__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 2rem 1.75rem;
+    background: linear-gradient(to top, rgba(10, 6, 3, 0.88) 0%, transparent 100%);
+}
+
+.detalle-hero__badges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.badge-categoria {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+}
+
+.detalle-hero__titulo {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 0.9rem;
+    line-height: 1.2;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.detalle-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-meta-item svg {
+    opacity: 0.75;
+}
+
+.hero-meta-item--rating {
+    color: #f5c842;
+    font-weight: 600;
+}
+
+.rating-count {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+}
+
+/* ── Badges de dificultad ── */
+
+.badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+}
+
+.badge--facil {
+    background: #0f2414;
+    color: #6dba7d;
+    border: 1px solid #1e4228;
+}
+
+.badge--media {
+    background: #231808;
+    color: #e0a840;
+    border: 1px solid #3d2c0a;
+}
+
+.badge--dificil {
+    background: #230e0e;
+    color: #e07070;
+    border: 1px solid #3d1818;
+}
+
+/* ── Cuerpo (2 columnas) ── */
+
+.detalle-cuerpo {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 3rem;
+}
+
+/* ── Secciones ── */
+
+.detalle-seccion {
+    margin-bottom: 2.25rem;
+}
+
+.detalle-seccion__titulo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dr-text);
+    margin: 0 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--dr-border);
+}
+
+.seccion-icon {
+    font-size: 1.1rem;
+}
+
+.comentarios-count {
+    margin-left: auto;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dr-muted);
+    background: var(--dr-tag-bg);
+    padding: 2px 10px;
+    border-radius: 999px;
+}
+
+.detalle-descripcion {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--dr-muted);
+    margin: 0;
+}
+
+/* ── Ingredientes ── */
+
+.lista-ingredientes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ingrediente {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.65rem 0;
+    border-bottom: 1px dashed var(--dr-border);
+    gap: 1rem;
+}
+
+.ingrediente:last-child {
+    border-bottom: none;
+}
+
+.ingrediente__nombre {
+    font-size: 14.5px;
+    color: var(--dr-text);
+}
+
+.ingrediente__cantidad {
+    font-size: 13.5px;
+    color: var(--dr-muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Pasos ── */
+
+.lista-pasos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.paso {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.paso__numero {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--dr-accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.paso__texto {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--dr-muted);
+    margin: 0;
+}
+
+/* ── Tags ── */
+
+.detalle-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tag {
+    font-size: 11.5px;
+    background: var(--dr-tag-bg);
+    color: var(--dr-tag-txt);
+    border-radius: 4px;
+    padding: 2px 8px;
+}
+
+/* ── Sidebar cards ── */
+
+.sidebar-card {
+    background: var(--dr-surface);
+    border: 1px solid var(--dr-border);
+    border-radius: var(--dr-radius);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--dr-shadow);
+}
+
+.sidebar-card__titulo {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dr-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 1rem;
+}
+
+.autor-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+}
+
+.autor-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c97a3a, #8c4e22);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.autor-nombre {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dr-text);
+    margin: 0 0 0.25rem;
+}
+
+.autor-bio {
+    font-size: 13px;
+    color: var(--dr-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.resumen-lista {
+    margin: 0;
+    padding: 0;
+}
+
+.resumen-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--dr-border);
+    font-size: 13.5px;
+}
+
+.resumen-item:last-child {
+    border-bottom: none;
+}
+
+.resumen-item dt {
+    color: var(--dr-muted);
+}
+
+.resumen-item dd {
+    font-weight: 500;
+    color: var(--dr-text);
+    margin: 0;
+}
+
+/* ── Comentarios ── */
+
+.detalle-comentarios {
+    border-top: 1px solid var(--dr-border);
+    padding-top: 2.5rem;
+}
+
+.comentarios-vacio {
+    font-size: 14px;
+    color: var(--dr-muted);
+    margin: 1.5rem 0 0;
+    font-style: italic;
+}
+
+.comentarios-lista {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+}
+
+.comentario {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--dr-border);
+}
+
+.comentario:last-child {
+    border-bottom: none;
+}
+
+.comentario__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.6rem;
+    gap: 1rem;
+}
+
+.comentario__autor {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.comentario__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8c5a3a, #5a3020);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.comentario__nombre {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dr-text);
+}
+
+.comentario__fecha {
+    display: block;
+    font-size: 12px;
+    color: var(--dr-muted);
+    margin-top: 1px;
+}
+
+.comentario__acciones {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.comentario__texto {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--dr-muted);
+    margin: 0;
+    padding-left: calc(36px + 0.75rem);
+}
+
+.btn-eliminar-comentario {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--dr-muted);
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    transition: color 0.15s, background 0.15s;
+}
+
+.btn-eliminar-comentario:hover {
+    color: #e07070;
+    background: #230e0e;
+}
+
+/* ── Estrellas ── */
+
+.estrellas {
+    display: flex;
+    gap: 1px;
+}
+
+.estrella {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #4a3828;
+    padding: 0;
+    line-height: 1;
+    cursor: default;
+    transition: color 0.12s, transform 0.1s;
+}
+
+.estrella--activa {
+    color: #e8a020;
+}
+
+.estrellas--interactivas .estrella {
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.estrellas--interactivas .estrella:hover,
+.estrellas--interactivas .estrella--activa {
+    color: #e8a020;
+    transform: scale(1.15);
+}
+
+/* ── Formulario comentario ── */
+
+.form-comentario {
+    background: var(--dr-surface);
+    border: 1px solid var(--dr-border);
+    border-radius: var(--dr-radius);
+    padding: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-comentario__titulo {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dr-text);
+    margin: 0 0 1rem;
+}
+
+.form-comentario__calificacion {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    font-size: 13px;
+    color: var(--dr-muted);
+    font-weight: 500;
+}
+
+.form-comentario__textarea {
+    width: 100%;
+    border: 1px solid var(--dr-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--dr-text);
+    background: var(--bg-main, #14110e);
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.form-comentario__textarea:focus {
+    border-color: var(--dr-accent);
+    box-shadow: 0 0 0 3px rgba(232, 141, 72, 0.15);
+}
+
+.form-comentario__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+}
+
+.form-comentario__contador {
+    font-size: 11.5px;
+    color: var(--dr-muted);
+}
+
+.btn-publicar {
+    padding: 8px 20px;
+    background: var(--dr-accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.btn-publicar:hover:not(:disabled) {
+    background: #c96d28;
+}
+
+.btn-publicar:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.btn-publicar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ── Skeleton ── */
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.detalle-receta--cargando {
+    padding: 2rem 0;
+}
+
+.detalle-skeleton__imagen {
+    height: 420px;
+    border-radius: var(--dr-radius);
+    background: linear-gradient(90deg, #1c1714 25%, #261f1b 50%, #1c1714 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+    margin-bottom: 2.5rem;
+}
+
+.detalle-skeleton__contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.detalle-skeleton__linea {
+    height: 18px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #1c1714 25%, #261f1b 50%, #1c1714 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+    .detalle-hero {
+        height: 280px;
+    }
+
+    .detalle-hero__overlay {
+        padding: 1.25rem;
+    }
+
+    .detalle-cuerpo {
+        grid-template-columns: 1fr;
+    }
+
+    .detalle-sidebar {
+        order: -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .sidebar-card {
+        margin-bottom: 0;
+    }
+
+    .comentario__texto {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .detalle-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .detalle-hero__titulo {
+        font-size: 1.4rem;
+    }
+}
+
+/* ── Botón editar receta (hero) ── */
+
+.acciones-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-accion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-align: left;
+}
+
+.btn-accion svg {
+    flex-shrink: 0;
+}
+
+.btn-accion--editar {
+    background: rgba(232, 141, 72, 0.1);
+    border-color: rgba(232, 141, 72, 0.25);
+    color: var(--accent-orange, #e88d48);
+}
+
+.btn-accion--editar:hover {
+    background: rgba(232, 141, 72, 0.2);
+    border-color: rgba(232, 141, 72, 0.5);
+}
+
+.btn-accion--eliminar {
+    background: rgba(224, 112, 112, 0.08);
+    border-color: rgba(224, 112, 112, 0.2);
+    color: #e07070;
+}
+
+.btn-accion--eliminar:hover:not(:disabled) {
+    background: rgba(224, 112, 112, 0.18);
+    border-color: rgba(224, 112, 112, 0.45);
+}
+
+.btn-accion--eliminar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

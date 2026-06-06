@@ -1,0 +1,71 @@
+.auth-page-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100svh;
+    background-color: var(--bg-main);
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.auth-header {
+    margin-bottom: 20px;
+}
+
+.auth-logo {
+    color: var(--accent-orange);
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+    font-family: 'Georgia', Cambria, serif;
+}
+
+.auth-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 32px 36px;
+    width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.auth-card-title {
+    color: var(--text-cream);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    margin-top: 0;
+    text-align: left;
+}
+
+.auth-card-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    text-align: left;
+    line-height: 1.4;
+}
+
+/* Pie de la tarjeta con el enlace de cambio */
+.auth-card-footer {
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+}
+
+.auth-link {
+    color: var(--accent-orange);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}

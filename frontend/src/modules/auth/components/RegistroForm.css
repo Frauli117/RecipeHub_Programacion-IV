@@ -1,0 +1,86 @@
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    color: var(--text-cream);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.form-input {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-cream);
+    padding: 11px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-input:focus {
+    border-color: var(--accent-orange);
+}
+
+/* Fila para el botón de revelar contraseñas */
+.form-utility-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -4px;
+}
+
+.btn-text-toggle {
+    background: transparent;
+    border: none;
+    color: var(--accent-orange);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-text-toggle:hover {
+    text-decoration: underline;
+}
+
+/* Botón de acción principal verde "Fácil" */
+.btn-submit {
+    background-color: var(--btn-green-bg);
+    color: var(--btn-green-text);
+    border: none;
+    padding: 14px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+    background-color: var(--btn-green-hover);
+}
+
+.btn-submit:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

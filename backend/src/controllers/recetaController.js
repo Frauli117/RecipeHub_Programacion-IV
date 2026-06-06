@@ -110,7 +110,7 @@ async function agregarCalificacionPromedio(recetas) {
 async function listarRecetas(req, res) {
   try {
     const filtros = {};
-    const { categoria, dificultad, tags } = req.query;
+    const { categoria, dificultad, tags, autorId } = req.query;
 
     if (categoria) {
       filtros.categoria = categoria;
@@ -121,6 +121,13 @@ async function listarRecetas(req, res) {
         return res.status(400).json({ error: 'La dificultad debe ser Fácil, Media o Difícil' });
       }
       filtros.dificultad = dificultad;
+    }
+
+    if (autorId) {
+      if (!esObjectIdValido(autorId)) {
+        return res.status(400).json({ error: 'autorId invalido' });
+      }
+      filtros.autorId = autorId;
     }
 
     if (tags) {

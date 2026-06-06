@@ -1,0 +1,391 @@
+/* ============================================================
+   PaginaPerfil.css — dark-first, usa variables de index.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap');
+
+.pp-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-cream, #f4ede2);
+}
+
+/* ── Perfil card ── */
+
+.pp-perfil-card {
+    position: relative;
+    background: var(--bg-card, #1c1714);
+    border: 1px solid var(--border-color, #362e28);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Franja decorativa superior */
+.pp-perfil-card__deco {
+    height: 80px;
+    background: linear-gradient(100deg,
+            #3a1f0e 0%,
+            #5a2e12 40%,
+            #3a1f0e 100%);
+    position: relative;
+}
+
+.pp-perfil-card__deco::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg,
+            transparent,
+            transparent 18px,
+            rgba(255, 255, 255, 0.025) 18px,
+            rgba(255, 255, 255, 0.025) 19px);
+}
+
+.pp-perfil-card__contenido {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+    padding: 0 2rem 1.75rem;
+    margin-top: -36px;
+    position: relative;
+}
+
+/* ── Avatar ── */
+
+.pp-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c97a3a, #7a3a10);
+    border: 3px solid var(--bg-card, #1c1714);
+    color: #fff;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Info del usuario ── */
+
+.pp-perfil-info {
+    padding-top: 2rem;
+    min-width: 0;
+}
+
+.pp-nombre {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-cream, #f4ede2);
+    margin: 0 0 0.2rem;
+    line-height: 1.2;
+}
+
+.pp-bio {
+    font-size: 14px;
+    color: var(--text-muted, #9b8c82);
+    margin: 0 0 0.75rem;
+    font-style: italic;
+}
+
+.pp-datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+}
+
+.pp-dato {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-muted, #9b8c82);
+}
+
+.pp-dato svg {
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+/* ── Sección recetas ── */
+
+.pp-recetas-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.pp-seccion-titulo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-cream, #f4ede2);
+    margin: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color, #362e28);
+}
+
+.pp-seccion-count {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted, #9b8c82);
+    background: #261f1b;
+    padding: 2px 10px;
+    border-radius: 999px;
+}
+
+/* ── Grid de recetas ── */
+
+.pp-recetas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+/* ── Tarjeta de receta ── */
+
+.pp-receta-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card, #1c1714);
+    border: 1px solid var(--border-color, #362e28);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.pp-receta-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    border-color: #4a3828;
+    text-decoration: none;
+}
+
+.pp-receta-card__img {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #261f1b;
+}
+
+.pp-receta-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.pp-receta-card:hover .pp-receta-card__img img {
+    transform: scale(1.05);
+}
+
+.pp-receta-card__img--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #261f1b, #1c1714);
+}
+
+.pp-receta-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem 1.25rem;
+    gap: 0.4rem;
+}
+
+.pp-receta-card__meta-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.15rem;
+}
+
+.pp-categoria {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted, #9b8c82);
+}
+
+/* Badges */
+.pp-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+}
+
+.pp-badge--facil {
+    background: #0f2414;
+    color: #6dba7d;
+    border: 1px solid #1e4228;
+}
+
+.pp-badge--media {
+    background: #231808;
+    color: #e0a840;
+    border: 1px solid #3d2c0a;
+}
+
+.pp-badge--dificil {
+    background: #230e0e;
+    color: #e07070;
+    border: 1px solid #3d1818;
+}
+
+.pp-receta-card__titulo {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-cream, #f4ede2);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.pp-receta-card__desc {
+    font-size: 13px;
+    color: var(--text-muted, #9b8c82);
+    line-height: 1.55;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.pp-receta-card__footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border-color, #362e28);
+}
+
+.pp-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-muted, #9b8c82);
+}
+
+.pp-meta-item svg {
+    opacity: 0.7;
+}
+
+.pp-meta-item--rating {
+    color: #e8a020;
+    font-weight: 500;
+}
+
+.pp-ver-mas {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent-orange, #e88d48);
+    margin-left: auto;
+    transition: gap 0.2s;
+}
+
+.pp-receta-card:hover .pp-ver-mas {
+    gap: 7px;
+}
+
+/* ── Estado vacío ── */
+
+.pp-vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 3rem 0;
+    color: var(--text-muted, #9b8c82);
+    text-align: center;
+}
+
+.pp-vacio__icon {
+    font-size: 2.5rem;
+    opacity: 0.5;
+}
+
+.pp-vacio p {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ── Skeleton ── */
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.pp-skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.pp-skeleton-card {
+    height: 260px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #1c1714 25%, #261f1b 50%, #1c1714 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 640px) {
+    .pp-perfil-card__contenido {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1.25rem 1.5rem;
+        gap: 0.75rem;
+        margin-top: -28px;
+    }
+
+    .pp-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+    }
+
+    .pp-perfil-info {
+        padding-top: 0;
+    }
+
+    .pp-recetas-grid,
+    .pp-skeleton-grid {
+        grid-template-columns: 1fr;
+    }
+}
