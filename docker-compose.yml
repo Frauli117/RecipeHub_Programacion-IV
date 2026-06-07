@@ -1,0 +1,32 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - interna
+    # ⚠️ NO hay 'ports' aquí — Mongo queda solo en la red interna
+
+  api:
+    build: ./backend
+    restart: always
+    depends_on:
+      - mongo
+    environment:
+      PORT: 4000
+      MONGO_URI: ${MONGO_URI}
+      JWT_SECRET: ${JWT_SECRET}
+    ports:
+      - "4000:4000"
+    networks:
+      - interna
+
+volumes:
+  mongo_data:
+
+networks:
+  interna:
