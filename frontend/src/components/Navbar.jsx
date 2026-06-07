@@ -1,13 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../modules/auth/context/useAuth";
-import { useModalReceta } from "../context/useModalReceta";
 import { toast } from "sonner";
 import "./Navbar.css";
 
 export default function Navbar() {
-    const { logout } = useAuth();
+    const { usuario, logout } = useAuth();
     const navigate = useNavigate();
-    const { abrirCrear } = useModalReceta();
 
     const handleLogout = async () => {
         try {
@@ -36,43 +34,56 @@ export default function Navbar() {
                         </Link>
                     </li>
 
-                    {/* Menú Desplegable: Recetas */}
-                    <li className="nav-dropdown">
-                        <span className="dropdown-trigger">
-                            Recetas <span className="arrow">▾</span>
-                        </span>
-                        <ul className="dropdown-menu">
-                            <li>
-                                <button
-                                    type="button"
-                                    className="dropdown-link dropdown-link--btn"
-                                    onClick={abrirCrear}
-                                >
-                                    Crear nueva receta
-                                </button>
+                    {usuario ? (
+                        <>
+                            {/* Menú Desplegable: Recetas */}
+                            <li className="nav-dropdown">
+                                <span className="dropdown-trigger">
+                                    Recetas <span className="arrow">▾</span>
+                                </span>
+                                <ul className="dropdown-menu">
+                                    <li>
+                                        <Link to="/nueva" className="dropdown-link">
+                                            Crear nueva receta
+                                        </Link>
+                                    </li>
+                                </ul>
                             </li>
-                        </ul>
-                    </li>
 
-                    {/* Menú Desplegable: Perfil */}
-                    <li className="nav-dropdown">
-                        <span className="dropdown-trigger">
-                            Perfil <span className="arrow">▾</span>
-                        </span>
-                        <ul className="dropdown-menu dropdown-menu-right">
+                            {/* Menú Desplegable: Perfil */}
+                            <li className="nav-dropdown">
+                                <span className="dropdown-trigger">
+                                    Perfil <span className="arrow">▾</span>
+                                </span>
+                                <ul className="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <Link to="/perfil" className="dropdown-link">
+                                            Mi perfil
+                                        </Link>
+                                    </li>
+                                    <li className="dropdown-divider"></li>
+                                    <li>
+                                        <button onClick={handleLogout} className="dropdown-btn-logout">
+                                            Cerrar sesión
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+                        </>
+                    ) : (
+                        <>
                             <li>
-                                <Link to="/perfil" className="dropdown-link">
-                                    Mi perfil
+                                <Link to="/login" className="nav-link">
+                                    Iniciar sesión
                                 </Link>
                             </li>
-                            <li className="dropdown-divider"></li>
                             <li>
-                                <button onClick={handleLogout} className="dropdown-btn-logout">
-                                    Cerrar sesión
-                                </button>
+                                <Link to="/register" className="nav-link">
+                                    Registrarse
+                                </Link>
                             </li>
-                        </ul>
-                    </li>
+                        </>
+                    )}
                 </ul>
             </div>
         </nav>

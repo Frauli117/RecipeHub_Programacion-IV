@@ -1,28 +1,23 @@
-/* Paleta de colores extraída de la imagen */
 :root {
     --bg-main: #14110e;
-    /* Fondo general muy oscuro */
-    --bg-card: #1c1714;
-    /* Fondo de la tarjeta (marrón oscuro) */
-    --text-cream: #f4ede2;
-    /* Texto claro principal */
-    --text-muted: #9b8c82;
-    /* Texto secundario/placeholders */
-    --accent-orange: #e88d48;
-    /* Naranja de los títulos */
-    --border-color: #362e28;
-    /* Líneas sutiles de separación */
 
-    /* Colores del botón verde "Fácil" */
+    --bg-card: #1c1714;
+
+    --text-cream: #f4ede2;
+
+    --text-muted: #9b8c82;
+
+    --accent-orange: #e88d48;
+
+    --border-color: #362e28;
+
     --btn-green-bg: #153d22;
     --btn-green-text: #7dbd90;
     --btn-green-hover: #1c4d2d;
 
-    /* Colores de las etiquetas claras */
     --input-bg: #261f1b;
 }
 
-/* Contenedor para centrar el login en la pantalla */
 .login-wrapper {
     display: flex;
     justify-content: center;
@@ -32,7 +27,6 @@
     font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* La tarjeta del formulario (inspirada en la de la receta) */
 .login-card {
     background-color: var(--bg-card);
     padding: 40px;
@@ -43,14 +37,13 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Textos de cabecera */
 .login-title {
     color: var(--text-cream);
     font-size: 24px;
     margin: 0 0 8px 0;
     font-weight: 600;
     text-shadow: 0 0 1px var(--accent-orange);
-    /* Ligero brillo cálido */
+
 }
 
 .login-subtitle {
@@ -59,7 +52,6 @@
     margin: 0 0 30px 0;
 }
 
-/* Diseño del formulario */
 .login-form {
     display: flex;
     flex-direction: column;
@@ -78,7 +70,6 @@
     font-weight: 500;
 }
 
-/* Entradas de texto */
 .form-input {
     background-color: var(--input-bg);
     border: 1px solid var(--border-color);
@@ -98,7 +89,6 @@
     border-color: var(--accent-orange);
 }
 
-/* Contenedor relativo para el input de contraseña y su botón */
 .password-input-wrapper {
     position: relative;
     display: flex;
@@ -108,7 +98,7 @@
 .password-input-wrapper .form-input {
     width: 100%;
     padding-right: 80px;
-    /* Espacio para el botón de mostrar/ocultar */
+
 }
 
 .btn-toggle-password {
@@ -127,14 +117,13 @@
     text-decoration: underline;
 }
 
-/* Botón principal (Estilo etiqueta "Fácil") */
 .btn-submit {
     background-color: var(--btn-green-bg);
     color: var(--btn-green-text);
     border: none;
     padding: 14px;
     border-radius: 20px;
-    /* Bordes más redondeados como la etiqueta */
+
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;

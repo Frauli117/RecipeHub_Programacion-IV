@@ -1,7 +1,3 @@
-/* ============================================================
-   PaginaPerfil.css — dark-first, usa variables de index.css
-   ============================================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap');
 
 .pp-page {
@@ -12,8 +8,6 @@
     color: var(--text-cream, #f4ede2);
 }
 
-/* ── Perfil card ── */
-
 .pp-perfil-card {
     position: relative;
     background: var(--bg-card, #1c1714);
@@ -22,7 +16,6 @@
     overflow: hidden;
 }
 
-/* Franja decorativa superior */
 .pp-perfil-card__deco {
     height: 80px;
     background: linear-gradient(100deg,
@@ -52,8 +45,6 @@
     position: relative;
 }
 
-/* ── Avatar ── */
-
 .pp-avatar {
     width: 72px;
     height: 72px;
@@ -70,8 +61,6 @@
     flex-shrink: 0;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
-
-/* ── Info del usuario ── */
 
 .pp-perfil-info {
     padding-top: 2rem;
@@ -113,8 +102,6 @@
     flex-shrink: 0;
 }
 
-/* ── Sección recetas ── */
-
 .pp-recetas-seccion {
     display: flex;
     flex-direction: column;
@@ -144,15 +131,11 @@
     border-radius: 999px;
 }
 
-/* ── Grid de recetas ── */
-
 .pp-recetas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.25rem;
 }
-
-/* ── Tarjeta de receta ── */
 
 .pp-receta-card {
     display: flex;
@@ -224,7 +207,6 @@
     color: var(--text-muted, #9b8c82);
 }
 
-/* Badges */
 .pp-badge {
     font-size: 11px;
     font-weight: 500;
@@ -315,8 +297,6 @@
     gap: 7px;
 }
 
-/* ── Estado vacío ── */
-
 .pp-vacio {
     display: flex;
     flex-direction: column;
@@ -336,8 +316,6 @@
     font-size: 14px;
     margin: 0;
 }
-
-/* ── Skeleton ── */
 
 @keyframes shimmer {
     0% {
@@ -362,8 +340,6 @@
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
 }
-
-/* ── Responsive ── */
 
 @media (max-width: 640px) {
     .pp-perfil-card__contenido {

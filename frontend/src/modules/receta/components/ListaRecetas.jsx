@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { listarRecetas } from "../api/recetaApi";
+import { Link } from "react-router-dom";
 import "./ListaRecetas.css";
 
 const DIFICULTADES = ["Fácil", "Media", "Difícil"];
@@ -23,7 +24,7 @@ function RecetaCard({ receta }) {
         <article className="receta-card">
             {receta.imagenUrl && (
                 <div className="receta-card__imagen">
-                    <img src={receta.imagenUrl} alt={receta.titulo} cargando="lazy" />
+                    <img src={receta.imagenUrl} alt={receta.titulo} loading="lazy" />
                 </div>
             )}
 
@@ -91,13 +92,13 @@ function RecetaCard({ receta }) {
                     </div>
                 )}
 
-                <a href={`/recetas/${receta._id}`} className="receta-card__cta">
+                <Link to={`/recetas/${receta._id}`} className="receta-card__cta">
                     Ver receta
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
                     </svg>
-                </a>
+                </Link>
             </div>
         </article>
     );
@@ -122,6 +123,7 @@ export default function ListaRecetas() {
         categoria: "",
         dificultad: "",
     });
+    const [busqueda, setBusqueda] = useState("");
 
     useEffect(() => {
         const cargarRecetas = async () => {
@@ -157,9 +159,27 @@ export default function ListaRecetas() {
 
     const hayFiltrosActivos = filtros.categoria || filtros.dificultad;
 
+    const recetasFiltradas = recetas.filter((r) => {
+        const q = busqueda.trim().toLowerCase();
+        if (!q) return true;
+        const enTitulo = r.titulo?.toLowerCase().includes(q);
+        const enTags = (r.tags ?? []).some((t) => t.toLowerCase().includes(q));
+        return enTitulo || enTags;
+    });
+
     return (
         <section className="lista-recetas" aria-label="Listado de recetas">
             <div className="lista-recetas__filtros">
+                <div className="filtros-grupo">
+                    <span className="filtros-label">Buscar</span>
+                    <input
+                        type="text"
+                        placeholder="Buscar por título o tag…"
+                        value={busqueda}
+                        onChange={(e) => setBusqueda(e.target.value)}
+                        style={{ padding: "0.55rem 0.8rem", borderRadius: 8, border: "1px solid var(--border-color, #444)", background: "var(--bg-card, #1f1f1f)", color: "inherit", minWidth: 260 }}
+                    />
+                </div>
                 <div className="filtros-grupo">
                     <span className="filtros-label">Categoría</span>
                     <div className="filtros-chips">
@@ -207,7 +227,7 @@ export default function ListaRecetas() {
                         ))}
                     </div>
                 </div>
-            ) : recetas.length === 0 ? (
+            ) : recetasFiltradas.length === 0 ? (
                 <div className="lista-recetas__estado lista-recetas__vacio" aria-live="polite">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
                         <path d="M3 2h18l-2 7H5L3 2z" />
@@ -228,10 +248,10 @@ export default function ListaRecetas() {
             ) : (
                 <>
                     <p className="lista-recetas__conteo" aria-live="polite">
-                        {recetas.length} {recetas.length === 1 ? "receta encontrada" : "recetas encontradas"}
+                        {recetasFiltradas.length} {recetasFiltradas.length === 1 ? "receta encontrada" : "recetas encontradas"}
                     </p>
                     <div className="recetas-grid">
-                        {recetas.map((receta) => (
+                        {recetasFiltradas.map((receta) => (
                             <RecetaCard key={receta._id} receta={receta} />
                         ))}
                     </div>

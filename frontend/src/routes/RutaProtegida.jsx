@@ -1,23 +1,17 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../modules/auth/context/useAuth";
-import Navbar from "../components/Navbar";
-import { ModalRecetaProvider } from "../context/ModalRecetaProvider";
-import FormReceta from "../modules/receta/components/FormReceta";
 
 export default function RutaProtegida({ children }) {
-    const { usuario } = useAuth();
+    const { usuario, cargando } = useAuth();
+
+    // Mientras se restaura la sesión no decidimos nada (evita botar al login al refrescar).
+    if (cargando) {
+        return null;
+    }
 
     if (!usuario) {
         return <Navigate to="/login" replace />;
     }
 
-    return (
-        <ModalRecetaProvider>
-            <Navbar />
-            <div className="main-content-layout">
-                {children}
-            </div>
-            <FormReceta />
-        </ModalRecetaProvider>
-    );
+    return children;
 }

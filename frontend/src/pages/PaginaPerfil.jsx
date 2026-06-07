@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../modules/auth/context/useAuth";
 import { listarRecetas } from "../modules/receta/api/recetaApi";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 import "./PaginaPerfil.css";
 
 const DIFICULTAD_CLASS = {
@@ -12,7 +13,7 @@ const DIFICULTAD_CLASS = {
 
 function TarjetaRecetaPerfil({ receta }) {
     return (
-        <a href={`/recetas/${receta._id}`} className="pp-receta-card">
+        <Link to={`/recetas/${receta._id}`} className="pp-receta-card">
             {receta.imagenUrl ? (
                 <div className="pp-receta-card__img">
                     <img src={receta.imagenUrl} alt={receta.titulo} loading="lazy" />
@@ -61,7 +62,7 @@ function TarjetaRecetaPerfil({ receta }) {
                     </span>
                 </div>
             </div>
-        </a>
+        </Link>
     );
 }
 
@@ -102,7 +103,7 @@ export default function PaginaPerfil() {
 
                     <div className="pp-perfil-info">
                         <h1 className="pp-nombre">{usuario?.nombre}</h1>
-                        <p className="pp-bio">¡Amo cocinar!</p>
+                        {usuario?.bio && <p className="pp-bio">{usuario.bio}</p>}
                         <div className="pp-datos">
                             <span className="pp-dato">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

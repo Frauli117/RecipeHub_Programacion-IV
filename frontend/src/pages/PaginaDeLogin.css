@@ -1,20 +1,12 @@
-/* Paleta de colores unificada */
 :root {
     --bg-main: #14110e;
-    /* Fondo general profundo */
     --bg-card: #1c1714;
-    /* Fondo de la tarjeta (marrón oscuro) */
     --text-cream: #f4ede2;
-    /* Texto claro principal */
     --text-muted: #9b8c82;
-    /* Texto secundario descriptor */
     --accent-orange: #e88d48;
-    /* Naranja rústico de acento */
     --border-color: #362e28;
-    /* Líneas de división sutiles */
 }
 
-/* Contenedor principal que abarca toda la pantalla */
 .login-page-wrapper {
     display: flex;
     align-items: center;
@@ -27,7 +19,6 @@
     font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* Encabezado/Logo de la aplicación */
 .login-header {
     margin-bottom: 20px;
 }
@@ -38,11 +29,9 @@
     font-weight: 700;
     margin: 0;
     letter-spacing: -0.5px;
-    /* Usamos una tipografía Serif para darle ese toque tradicional/gourmet */
     font-family: 'Georgia', Cambria, Georgia, serif;
 }
 
-/* La tarjeta contenedora (reemplaza el contenedor claro previo) */
 .login-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -54,7 +43,6 @@
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* Títulos internos de la tarjeta */
 .login-card-title {
     color: var(--text-cream);
     font-size: 24px;

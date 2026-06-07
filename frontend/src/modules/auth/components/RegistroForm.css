@@ -37,7 +37,6 @@
     border-color: var(--accent-orange);
 }
 
-/* Fila para el botón de revelar contraseñas */
 .form-utility-row {
     display: flex;
     justify-content: flex-end;
@@ -58,7 +57,6 @@
     text-decoration: underline;
 }
 
-/* Botón de acción principal verde "Fácil" */
 .btn-submit {
     background-color: var(--btn-green-bg);
     color: var(--btn-green-text);

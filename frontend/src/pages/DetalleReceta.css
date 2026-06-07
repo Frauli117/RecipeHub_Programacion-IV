@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap');
 
-/* ── Aliases locales que mapean a las variables globales ── */
 .detalle-receta {
     --dr-surface: var(--bg-card, #1c1714);
     --dr-border: var(--border-color, #362e28);
@@ -13,8 +12,6 @@
     --dr-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* ── Layout ── */
-
 .detalle-receta {
     max-width: 1100px;
     margin: 0 auto;
@@ -22,8 +19,6 @@
     font-family: 'DM Sans', sans-serif;
     color: var(--dr-text);
 }
-
-/* ── Hero ── */
 
 .detalle-hero {
     position: relative;
@@ -121,8 +116,6 @@
     font-size: 12px;
 }
 
-/* ── Badges de dificultad ── */
-
 .badge {
     font-size: 11px;
     font-weight: 500;
@@ -149,8 +142,6 @@
     border: 1px solid #3d1818;
 }
 
-/* ── Cuerpo (2 columnas) ── */
-
 .detalle-cuerpo {
     display: grid;
     grid-template-columns: 1fr 300px;
@@ -158,8 +149,6 @@
     align-items: start;
     margin-bottom: 3rem;
 }
-
-/* ── Secciones ── */
 
 .detalle-seccion {
     margin-bottom: 2.25rem;
@@ -200,8 +189,6 @@
     margin: 0;
 }
 
-/* ── Ingredientes ── */
-
 .lista-ingredientes {
     list-style: none;
     margin: 0;
@@ -232,8 +219,6 @@
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
 }
-
-/* ── Pasos ── */
 
 .lista-pasos {
     list-style: none;
@@ -272,8 +257,6 @@
     margin: 0;
 }
 
-/* ── Tags ── */
-
 .detalle-tags {
     display: flex;
     flex-wrap: wrap;
@@ -287,8 +270,6 @@
     border-radius: 4px;
     padding: 2px 8px;
 }
-
-/* ── Sidebar cards ── */
 
 .sidebar-card {
     background: var(--dr-surface);
@@ -369,8 +350,6 @@
     color: var(--dr-text);
     margin: 0;
 }
-
-/* ── Comentarios ── */
 
 .detalle-comentarios {
     border-top: 1px solid var(--dr-border);
@@ -473,8 +452,6 @@
     background: #230e0e;
 }
 
-/* ── Estrellas ── */
-
 .estrellas {
     display: flex;
     gap: 1px;
@@ -505,8 +482,6 @@
     color: #e8a020;
     transform: scale(1.15);
 }
-
-/* ── Formulario comentario ── */
 
 .form-comentario {
     background: var(--dr-surface);
@@ -596,8 +571,6 @@
     cursor: not-allowed;
 }
 
-/* ── Skeleton ── */
-
 @keyframes shimmer {
     0% {
         background-position: 200% 0;
@@ -634,8 +607,6 @@
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
 }
-
-/* ── Responsive ── */
 
 @media (max-width: 768px) {
     .detalle-hero {
@@ -675,8 +646,6 @@
         font-size: 1.4rem;
     }
 }
-
-/* ── Botón editar receta (hero) ── */
 
 .acciones-lista {
     display: flex;
