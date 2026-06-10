@@ -1,0 +1,39 @@
+name: Deploy RecipeHub
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instalar dependencias
+        run: npm install
+        working-directory: ./backend
+      - name: Correr pruebas
+        run: npm test
+        working-directory: ./backend
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /home/ubuntu/recipehub
+            git pull origin master
+            sudo docker compose up -d --build
+            cd frontend
+            npm install
+            VITE_API_URL=https://api.recipehubb.xyz npm run build
+            sleep 5
+            curl -f https://api.recipehubb.xyz/api/health
