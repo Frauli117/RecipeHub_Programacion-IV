@@ -23,7 +23,7 @@ export default function Navbar() {
             <div className="navbar-container">
                 <div className="navbar-brand">
                     <Link to="/" className="navbar-logo">
-                        RecipeHub
+                        RecipeHub $$
                     </Link>
                 </div>
 
