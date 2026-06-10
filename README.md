@@ -22,7 +22,6 @@ explorar, calificar y comentar recetas.
 - El **backend** corre en un contenedor Docker; Nginx redirige `/api/*` al puerto interno 4000.
 - **MongoDB** vive en la red interna de Docker, **sin puerto expuesto al host**. Los datos persisten en el volumen nombrado `mongo_data`.
 
-Diagrama y descripción detallada en [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md).
 
 ---
 
