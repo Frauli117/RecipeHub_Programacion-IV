@@ -14,32 +14,8 @@ explorar, calificar y comentar recetas.
 
 ## Arquitectura
 
-```
-                        Internet (HTTPS / 443)
-                                │
-              ┌─────────────────┴──────────────────┐
-              │                                     │
-     app.recipehubb.xyz                    api.recipehubb.xyz
-              │                                     │
-              ▼                                     ▼
-┌──────────────────────────────────────────────────────────────┐
-│                      VPS Ubuntu 24.04                         │
-│                                                              │
-│   ┌────────────────────── Nginx ──────────────────────┐     │
-│   │  :80  → redirige 301 a HTTPS (ambos subdominios)   │     │
-│   │  app.* :443 → sirve frontend/dist  (try_files SPA) │     │
-│   │  api.* :443 → proxy_pass → 127.0.0.1:4000          │     │
-│   └────────────────────────┬───────────────────────────┘    │
-│                            │                                 │
-│            ┌───────────────┴──────────────┐ (Docker Compose) │
-│            ▼                               ▼                  │
-│   ┌─────────────────┐            ┌────────────────────┐      │
-│   │  api (Express)  │ ─────────► │  mongo:7           │      │
-│   │  contenedor     │  red       │  contenedor        │      │
-│   │  :4000          │  interna   │  SIN puerto público │      │
-│   └─────────────────┘            │  volumen mongo_data │      │
-│                                  └────────────────────┘      │
-└──────────────────────────────────────────────────────────────┘
+![image alt](https://github.com/Frauli117/RecipeHub_Programacion-IV/blob/49e75a603e8d2a6c8b002142d998e86753c206f8/ArquitecturaP4.drawio.png)
+
 ```
 
 - El **frontend** es un build estático (`dist/`) servido directamente por Nginx. No hay servidor Node para el frontend.
